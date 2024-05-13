@@ -1,0 +1,29 @@
+﻿﻿.btn-home {
+    width: 180px;
+    height: 280px;
+    background: linear-gradient(to right, #06184D, #06184D);
+    border-radius: 50px;
+    -webkit-transition: background 300ms ease-in-out, box-shadow 300ms ease-in-out;
+    transition: background 300ms ease-in-out, box-shadow 300ms ease-in-out;
+    box-shadow: 0 5px 5px #243b8c;
+}
+
+.btn-home:hover {
+    background: linear-gradient(to right, #06184D, #06184D);
+    color: #ffffff;
+    box-shadow: 5px 5px 10px #243b8c;
+    
+}
+
+tr {
+    color: #06184D;
+}
+
+td {
+    border: 5px solid #E0E8FF;
+}
+
+thead {
+    background-color: #243B8C;
+    border: 5px solid #E0E8FF;
+}

@@ -1,0 +1,163 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F72EDEE8-3B2E-4BC3-8B9E-B734420EE160}|C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\Carlink|c:\\users\\palme\\onedrive\\desktop\\application-carlink-main\\carlink\\paginas\\carlink_landing.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{F72EDEE8-3B2E-4BC3-8B9E-B734420EE160}|C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\Carlink|solutionrelative:carlink\\paginas\\carlink_landing.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F72EDEE8-3B2E-4BC3-8B9E-B734420EE160}|C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\Carlink|c:\\users\\palme\\onedrive\\desktop\\application-carlink-main\\carlink\\paginas\\carlink_login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{F72EDEE8-3B2E-4BC3-8B9E-B734420EE160}|C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\Carlink|solutionrelative:carlink\\paginas\\carlink_login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F72EDEE8-3B2E-4BC3-8B9E-B734420EE160}|C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\Carlink|c:\\users\\palme\\onedrive\\desktop\\application-carlink-main\\carlink\\css\\style_landing.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{F72EDEE8-3B2E-4BC3-8B9E-B734420EE160}|C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\Carlink|solutionrelative:carlink\\css\\style_landing.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F72EDEE8-3B2E-4BC3-8B9E-B734420EE160}|C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\Carlink|C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\carlink\\paginas\\masterpage.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "RelativeMoniker": "D:0:0:{F72EDEE8-3B2E-4BC3-8B9E-B734420EE160}|C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\Carlink|solutionrelative:carlink\\paginas\\masterpage.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F72EDEE8-3B2E-4BC3-8B9E-B734420EE160}|C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\Carlink|C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\carlink\\paginas\\carlink_home.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{F72EDEE8-3B2E-4BC3-8B9E-B734420EE160}|C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\Carlink|solutionrelative:carlink\\paginas\\carlink_home.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F72EDEE8-3B2E-4BC3-8B9E-B734420EE160}|C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\Carlink|c:\\users\\palme\\onedrive\\desktop\\application-carlink-main\\carlink\\css\\style_login.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{F72EDEE8-3B2E-4BC3-8B9E-B734420EE160}|C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\Carlink|solutionrelative:carlink\\css\\style_login.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F72EDEE8-3B2E-4BC3-8B9E-B734420EE160}|C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\Carlink|C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\carlink\\paginas\\carlink_cadastro.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{F72EDEE8-3B2E-4BC3-8B9E-B734420EE160}|C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\Carlink|solutionrelative:carlink\\paginas\\carlink_cadastro.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F72EDEE8-3B2E-4BC3-8B9E-B734420EE160}|C:\\Users\\hemil\\Desktop\\Application-CarLink\\Carlink|C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\carlink\\css\\style_login.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{F72EDEE8-3B2E-4BC3-8B9E-B734420EE160}|C:\\Users\\hemil\\Desktop\\Application-CarLink\\Carlink|solutionrelative:carlink\\css\\style_login.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "style_landing.css",
+              "DocumentMoniker": "C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\Carlink\\css\\style_landing.css",
+              "RelativeDocumentMoniker": "Carlink\\css\\style_landing.css",
+              "ToolTip": "C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\Carlink\\css\\style_landing.css",
+              "RelativeToolTip": "Carlink\\css\\style_landing.css",
+              "ViewState": "AQIAALoBAAAAAAAAAAAgwNABAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-05-13T15:13:14.454Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CarLink_Login.aspx",
+              "DocumentMoniker": "C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\Carlink\\Paginas\\CarLink_Login.aspx",
+              "RelativeDocumentMoniker": "Carlink\\Paginas\\CarLink_Login.aspx",
+              "ToolTip": "C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\Carlink\\Paginas\\CarLink_Login.aspx",
+              "RelativeToolTip": "Carlink\\Paginas\\CarLink_Login.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-05-13T14:51:57.457Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "style_login.css",
+              "DocumentMoniker": "C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\Carlink\\css\\style_login.css",
+              "RelativeDocumentMoniker": "Carlink\\css\\style_login.css",
+              "ToolTip": "C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\Carlink\\css\\style_login.css",
+              "RelativeToolTip": "Carlink\\css\\style_login.css",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABwAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-05-13T14:24:11.414Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MasterPage.master",
+              "DocumentMoniker": "C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\Carlink\\Paginas\\MasterPage.master",
+              "RelativeDocumentMoniker": "Carlink\\Paginas\\MasterPage.master",
+              "ToolTip": "C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\Carlink\\Paginas\\MasterPage.master",
+              "RelativeToolTip": "Carlink\\Paginas\\MasterPage.master",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-05-13T00:45:45.096Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CarLink_Cadastro.aspx",
+              "DocumentMoniker": "C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\Carlink\\Paginas\\CarLink_Cadastro.aspx",
+              "RelativeDocumentMoniker": "Carlink\\Paginas\\CarLink_Cadastro.aspx",
+              "ToolTip": "C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\Carlink\\Paginas\\CarLink_Cadastro.aspx",
+              "RelativeToolTip": "Carlink\\Paginas\\CarLink_Cadastro.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-05-13T00:24:19.55Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CarLink_Home.aspx",
+              "DocumentMoniker": "C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\Carlink\\Paginas\\CarLink_Home.aspx",
+              "RelativeDocumentMoniker": "Carlink\\Paginas\\CarLink_Home.aspx",
+              "ToolTip": "C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\Carlink\\Paginas\\CarLink_Home.aspx",
+              "RelativeToolTip": "Carlink\\Paginas\\CarLink_Home.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-05-12T22:37:54.757Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CarLink_Landing.aspx",
+              "DocumentMoniker": "C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\Carlink\\Paginas\\CarLink_Landing.aspx",
+              "RelativeDocumentMoniker": "Carlink\\Paginas\\CarLink_Landing.aspx",
+              "ToolTip": "C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\Carlink\\Paginas\\CarLink_Landing.aspx",
+              "RelativeToolTip": "Carlink\\Paginas\\CarLink_Landing.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-05-12T15:08:33.898Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "style_login.css",
+              "DocumentMoniker": "C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\Carlink\\css\\style_login.css",
+              "RelativeDocumentMoniker": "Carlink\\css\\style_login.css",
+              "ToolTip": "C:\\Users\\palme\\OneDrive\\Desktop\\Application-CarLink-main\\Carlink\\css\\style_login.css",
+              "RelativeToolTip": "Carlink\\css\\style_login.css",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-04-29T21:11:20.697Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
