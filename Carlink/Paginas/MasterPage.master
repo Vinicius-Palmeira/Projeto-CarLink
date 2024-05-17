@@ -58,7 +58,8 @@
                 <div id="collapseCadastro" class="collapse" aria-labelledby="headingCadastro" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="<%= UrlNav("CarLink_Cadastro.aspx") %>"><i class="fas fa-fw fa-pen" style="margin-right:10px"></i>Carro</a>
-                        <a class="collapse-item" href="<%= UrlNav("CarLink_Cadastro.aspx") %>"><i class="fas fa-fw fa-book" style="margin-right:10px"></i>   Cliente</a>
+                        <a class="collapse-item" href="<%= UrlNav("CarLink_Cadastro.aspx") %>"><i class="fas fa-fw fa-book" style="margin-right:10px"></i>Cliente</a>
+                        <a class="collapse-item" href="<%= UrlNav("CarLink_Cadastro.aspx") %>"><i class="bx bxs-user fa-book" style="margin-right:10px"></i>Mecânico</a>
                     </div>
                 </div>
             </li>
