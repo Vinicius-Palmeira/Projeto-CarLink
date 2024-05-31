@@ -21,5 +21,3 @@ const handleCep = async (event) => {
         console.log(error);
     }
 }
-
-

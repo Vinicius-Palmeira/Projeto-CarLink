@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Paginas/MasterPage.master" AutoEventWireup="true" CodeFile="CarLink_Ordem.aspx.cs" Inherits="Paginas_CarLink_Ordem" %>
 
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
@@ -15,56 +17,73 @@
                         <asp:Label ID="lblMensagem" runat="server" CssClass="form-label text-danger"></asp:Label>
                     </div>
 
-                    <div class="col-6 my-2">
-                        <asp:Label ID="lblDataEntra" runat="server" AssociatedControlID="txtBoxDataEntra" CssClass="form-label">Data de Entrada</asp:Label>
-                        <asp:TextBox ID="txtBoxDataEntra" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
+                    <div class="col-6 my-1">
+                        <asp:Label ID="lblVeiculo" runat="server" AssociatedControlID="txtBoxVeiculo" CssClass="form-label">Veículo Associado</asp:Label>
+                        <div class="input-group my-2">
+                            <asp:TextBox ID="txtBoxVeiculo" runat="server" CssClass="form-control" placeholder="Marca" AutoPostBack="True"></asp:TextBox>
+                            <div class="input-group-append">
+                                <button id="btnProcurarVeic" class="btn btn-primary btn-outline-secondary" type="button" onclick="document.getElementById('<%= btnProcurarVeicHidden.ClientID %>').click();">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                <asp:Button ID="btnProcurarVeicHidden" runat="server" OnClick="btnProcurarVeic_Click" Style="display: none;" />
+                            </div>
+                        </div>
                     </div>
 
+
                     <div class="col-6 my-2">
-                        <asp:Label ID="lblDataFinalizar" runat="server" AssociatedControlID="txtBoxDataFinalizar" CssClass="form-label">Data de Finalização</asp:Label>
-                        <asp:TextBox ID="txtBoxDataFinalizar" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
+                        <asp:Label ID="lblModelo" runat="server" AssociatedControlID="dropDownModelo" CssClass="form-label">Modelo</asp:Label>
+                        <asp:DropDownList ID="dropDownModelo" runat="server" CssClass="form-control" AutoPostBack="True" OnSelectedIndexChanged="dropDownModelo_SelectedIndexChanged">
+                            <asp:ListItem Text="--- Selecione o veículo ---" Value="0"></asp:ListItem>
+                        </asp:DropDownList>
+
                     </div>
 
                     <div class="col-12 my-2">
-                        <asp:Label ID="lblDescri" runat="server" AssociatedControlID="txtBoxDescri" CssClass="form-label">Descrição</asp:Label>
-                        <asp:TextBox ID="txtBoxDescri" runat="server" CssClass="form-control" placeholder="...."></asp:TextBox>
+                        <h5 class="card-title">Dados do Veículo</h5>
+                        <hr />
+                        <div class="row">
+
+                            <div class="col-4 my-2">
+                                <asp:Label ID="lblMarca" runat="server" CssClass="form-label">Marca</asp:Label>
+                                <asp:Label ID="lblmsgMarca" runat="server" CssClass="form-control" Style="border: 1px solid grey; margin-top: 10px"></asp:Label>
+                            </div>
+
+                            <div class="col-4 my-2">
+                                <asp:Label ID="Label1" runat="server" CssClass="form-label">Modelo</asp:Label>
+                                <asp:Label ID="lblmsgModelo" runat="server" CssClass="form-control" Style="border: 1px solid grey; margin-top: 10px"></asp:Label>
+                            </div>
+
+                            <div class="col-4 my-2">
+                                <asp:Label ID="lblChassi" runat="server" CssClass="form-label">Chassi</asp:Label>
+                                <asp:Label ID="lblmsgChassi" runat="server" CssClass="form-control" Style="border: 1px solid grey; margin-top: 10px"></asp:Label>
+                            </div>
+
+                            <div class="col-4 my-2">
+                                <asp:Label ID="lblAno" runat="server" CssClass="form-label">Ano</asp:Label>
+                                <asp:Label ID="lblmsgAno" runat="server" CssClass="form-control" Style="border: 1px solid grey; margin-top: 10px"></asp:Label>
+                            </div>
+
+                            <div class="col-4 my-2">
+                                <asp:Label ID="lblKm" runat="server" CssClass="form-label">Quilometragem</asp:Label>
+                                <asp:Label ID="lblmsgKm" runat="server" CssClass="form-control" Style="border: 1px solid grey; margin-top: 10px"></asp:Label>
+                            </div>
+
+                             <div class="col-4 my-2">
+                                <asp:Label ID="lblPlaca" runat="server" CssClass="form-label">Placa</asp:Label>
+                                <asp:Label ID="lblmsgPlaca" runat="server" CssClass="form-control" Style="border: 1px solid grey; margin-top: 10px"></asp:Label>
+                            </div>
+                        </div>
+                    </div>           
+
+                    <div class="col-12 my-2">
+                        <asp:Label ID="lblObservacao" runat="server" AssociatedControlID="txtBoxObservacao" CssClass="form-label">Observação</asp:Label>
+                        <asp:TextBox ID="txtBoxObservacao" runat="server" CssClass="form-control" Style="height: 120px"></asp:TextBox>
                     </div>
 
                     <div class="col-6 my-2">
-                        <asp:Label ID="LabelPeca" runat="server" AssociatedControlID="TextBoxPeca" CssClass="form-label">Peças utilizadas</asp:Label>
-                        <asp:TextBox ID="TextBoxPeca" runat="server" CssClass="form-control" placeholder="Peças utilizadas..."></asp:TextBox>
-                    </div>
-
-                    <div class="col-6 my-2">
-                        <asp:Label ID="LabelQtd" runat="server" AssociatedControlID="TextBoxQtd" CssClass="form-label">Quantidade utilizada</asp:Label>
-                        <asp:TextBox ID="TextBoxQtd" runat="server" CssClass="form-control" placeholder="Quantidade..."></asp:TextBox>
-                    </div>
-
-                    <div class="col-6 my-2">
-                        <asp:Label ID="lblValServ" runat="server" AssociatedControlID="txtBoxValServ" CssClass="form-label">Valor de Serviço</asp:Label>
-                        <asp:TextBox ID="txtBoxValServ" runat="server" CssClass="form-control" placeholder="R$ 100.00"></asp:TextBox>
-                    </div>
-
-                    <div class="col-6 my-2">
-                        <asp:Label ID="lblValorTotal" runat="server" AssociatedControlID="txtBoxValorTotal" CssClass="form-label">Valor Total</asp:Label>
-                        <asp:TextBox ID="txtBoxValorTotal" runat="server" CssClass="form-control" placeholder="R$ 250.00"></asp:TextBox>
-                    </div>
-
-                    <div class="col-6 my-2">
-                        <asp:Label ID="lblVeiculo" runat="server" AssociatedControlID="txtBoxVeiculo" CssClass="form-label">Placa do veículo</asp:Label>
-                        <asp:TextBox ID="txtBoxVeiculo" runat="server" CssClass="form-control" placeholder="XXXXXXXXX"></asp:TextBox>
-                    </div>
-
-                    <div class="col-6 my-2">
-                        <asp:Label ID="lblMecanico" runat="server" AssociatedControlID="txtBoxMecanico" CssClass="form-label">Mecânico</asp:Label>
-                        <asp:TextBox ID="txtBoxMecanico" runat="server" CssClass="form-control" placeholder="John Doe"></asp:TextBox>
-                    </div>
-
-                    <div class="col-6 my-2">
-                        <asp:Label ID="lblIdCliente" runat="server" AssociatedControlID="dropDownIdCliente" CssClass="form-label">Cliente Associado</asp:Label>
-                        <asp:DropDownList ID="dropDownIdCliente" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                            <asp:ListItem Text="Selecione o Cliente" Value=""></asp:ListItem>
-                        </asp:DropDownList>
+                         <asp:Label ID="lblDataEmissao" runat="server" AssociatedControlID="txtBoxDataEmissao" CssClass="form-label">Data de Emissão</asp:Label>
+                         <asp:TextBox ID="txtBoxDataEmissao" runat="server" CssClass="form-control" placeholder="dd/mm/yyyy"></asp:TextBox>
                     </div>
 
                     <div class="text-center col-12 mt-4">

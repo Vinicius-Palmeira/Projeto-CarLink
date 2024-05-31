@@ -12,7 +12,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="../img_master/carl.png" rel="icon">
+  <link href="../img_landpage/img_CarLink.png" rel="icon">
   <link href="../img_landpage/img_CarLink-removebg-preview-C.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -39,7 +39,7 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
-        <h1><a href="index.html"><span>CarLink</span></a></h1>
+        <h1><a><span>CarLink</span></a></h1>
       </div>
 
       <nav id="navbar" class="navbar">
@@ -101,7 +101,7 @@
 
         <div class="row content">
           <div class="col-md-4 justify-content-center align-items-center d-flex" data-aos="fade-right">
-            <img src="../img_landpage/pexels-pixabay-162553.jpg" class="img-fluid rounded" alt="">
+            <img src="../img_landpage/pexels-pixabay-162553.jpg" class="img-fluid" style="border-radius: 15px" alt="">
           </div>
           <div class="col-md-8 order-2 order-md-1" data-aos="fade-up">
             <h3>Temos uma solução para os seus problemas dentro da sua oficina.</h3>
@@ -123,7 +123,7 @@
         <div class="row content">
           <div class="col-md-4 order-1 order-md-2 justify-content-center align-items-center d-flex"
             data-aos="fade-left">
-            <img src="../img_landpage/pexels-maxchen2k-18090279.jpg" class="img-fluid rounded" alt="">
+            <img src="../img_landpage/pexels-maxchen2k-18090279.jpg" class="img-fluid" style="border-radius: 15px" alt="">
           </div>
           <div class="col-md-8 " data-aos="fade-up">
             <h3>Quais são os nossos objetivos</h3>
@@ -146,7 +146,7 @@
 
         <div class="row content">
           <div class="col-md-4 mb-20px justify-content-center align-items-center d-flex" data-aos="fade-right">
-            <img src="../img_landpage/mecanico.jpg" class="img-fluid w-100 rounded" alt="">
+            <img src="../img_landpage/img_mecânico.jpg" class="img-fluid w-100" style="border-radius: 15px" alt="">
           </div>
 
           <div class="col-md-8 " data-aos="fade-up">

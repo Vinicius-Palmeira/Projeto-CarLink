@@ -1,29 +1,16 @@
-﻿﻿.btn-home {
+﻿.btn-home {
     width: 180px;
     height: 280px;
-    background: linear-gradient(to right, #06184D, #06184D);
+    background: linear-gradient(to right, #566DB3, #0047ab);
     border-radius: 50px;
     -webkit-transition: background 300ms ease-in-out, box-shadow 300ms ease-in-out;
     transition: background 300ms ease-in-out, box-shadow 300ms ease-in-out;
-    box-shadow: 0 5px 5px #243b8c;
+    box-shadow: 0 0 0px #566DB3;
 }
 
-.btn-home:hover {
-    background: linear-gradient(to right, #06184D, #06184D);
-    color: #ffffff;
-    box-shadow: 5px 5px 10px #243b8c;
-    
-}
+    .btn-home:hover {
+        background: linear-gradient(to right, #566DB3, #9CAEE6);
+        color: #ffffff;
+        box-shadow: 5px 5px 10px #566DB3;
+    }
 
-tr {
-    color: #06184D;
-}
-
-td {
-    border: 5px solid #E0E8FF;
-}
-
-thead {
-    background-color: #243B8C;
-    border: 5px solid #E0E8FF;
-}

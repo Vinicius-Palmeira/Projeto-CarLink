@@ -3,6 +3,11 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
 using System.Configuration;
+using CarLink.Classes.Gestao;
+using CarLink.Persistencia.Gestão;
+using CarLink.Persistencia.Automotivo;
+using System.Data;
+using CarLink.Classes.Automotivo;
 
 public partial class Paginas_CarLink_Ordem : System.Web.UI.Page
 {
@@ -10,163 +15,188 @@ public partial class Paginas_CarLink_Ordem : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            BindClientesDropDown();
+
         }
     }
 
-    private void BindClientesDropDown()
+    private void LimparCampos_Osv()
     {
-        string connectionString = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
-        using (MySqlConnection connection = new MySqlConnection(connectionString))
-        {
-            string query = "SELECT CLI_CODIGO, CLI_NOME FROM CLI_CLIENTE";
-            MySqlCommand command = new MySqlCommand(query, connection);
-            try
-            {
-                connection.Open();
-                MySqlDataReader reader = command.ExecuteReader();
-                dropDownIdCliente.DataSource = reader;
-                dropDownIdCliente.DataTextField = "CLI_NOME";
-                dropDownIdCliente.DataValueField = "CLI_CODIGO";
-                dropDownIdCliente.DataBind();
-            }
-            catch (Exception ex)
-            {
-                // Realiza a verificação e exibe a menssagem
-                Console.WriteLine("Erro ao carregar clientes: " + ex.Message);
-            }
-        }
-        dropDownIdCliente.Items.Insert(0, new ListItem("Selecione o Cliente", ""));
+        // Limpar todos os campos
+        txtBoxVeiculo.Text = "";
+        lblmsgMarca.Text = "";
+        lblmsgModelo.Text = "";
+        lblmsgChassi.Text = "";
+        lblmsgAno.Text = "";
+        lblmsgKm.Text = "";
+        txtBoxObservacao.Text = "";
+        txtBoxDataEmissao.Text = " ";
+        lblmsgPlaca.Text = "";
+
+        lblMensagem.Text = "";
     }
+    Ordemsv osv = new Ordemsv();
 
     protected void btnSalvarOS_Click(object sender, EventArgs e)
     {
-        lblMensagem.Text = string.Empty;
-
-        // Vai validar os campos
-        if (string.IsNullOrEmpty(txtBoxDataEntra.Text) || string.IsNullOrEmpty(txtBoxDataFinalizar.Text) ||
-            string.IsNullOrEmpty(txtBoxDescri.Text) || string.IsNullOrEmpty(txtBoxValServ.Text) ||
-            string.IsNullOrEmpty(txtBoxVeiculo.Text) || string.IsNullOrEmpty(txtBoxMecanico.Text))
+        //Ordemsv osv = new Ordemsv();
+        if (dropDownModelo.SelectedItem.Value != "0")
         {
-            lblMensagem.Text = "Todos os campos são obrigatórios.";
-            lblMensagem.CssClass = "text-danger";
-            return;
-        }
 
-        DateTime dataEntra;
-        DateTime dataFinalizar;
-        double valorServico;
-
-        if (!DateTime.TryParse(txtBoxDataEntra.Text, out dataEntra) || !DateTime.TryParse(txtBoxDataFinalizar.Text, out dataFinalizar))
-        {
-            lblMensagem.Text = "Data de Entrada e Data de Finalização devem ser válidas.";
-            lblMensagem.CssClass = "text-danger";
-            return;
-        }
-
-        if (!double.TryParse(txtBoxValServ.Text, out valorServico))
-        {
-            lblMensagem.Text = "Valor de Serviço deve ser um número válido.";
-            lblMensagem.CssClass = "text-danger";
-            return;
-        }
-
-        string descricao = txtBoxDescri.Text;
-        string placaVeiculo = txtBoxVeiculo.Text;
-        string mecanico = txtBoxMecanico.Text;
-
-        // verificação se o registro está cadastrado ou não
-        string clienteAssociado = GetClienteAssociado(placaVeiculo);
-        if (clienteAssociado == null)
-        {
-            lblMensagem.Text = "Veículo não está cadastrado.";
-            lblMensagem.CssClass = "text-danger";
-            return;
-        }
-
-        //Se estiver cadastrado, faz o link do cliente ao dropdown
-        dropDownIdCliente.SelectedValue = clienteAssociado;
-
-        string connectionString = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
-        using (MySqlConnection connection = new MySqlConnection(connectionString))
-        {
-            string insertQuery = @"INSERT INTO ODS_ORDEM_SERVICO (ODS_DATACRIACAO, ODS_DATAFINALIZAR, ODS_DESCRICAO, ODS_VALORTOTAL, VEI_PLACA) 
-                                   VALUES (@DataCriacao, @DataFinalizar, @Descricao, @ValorTotal, @VeiculoPlaca)";
-            MySqlCommand command = new MySqlCommand(insertQuery, connection);
-            command.Parameters.AddWithValue("@DataCriacao", dataEntra);
-            command.Parameters.AddWithValue("@DataFinalizar", dataFinalizar);
-            command.Parameters.AddWithValue("@Descricao", descricao);
-            command.Parameters.AddWithValue("@ValorTotal", valorServico);
-            command.Parameters.AddWithValue("@VeiculoPlaca", placaVeiculo);
-            
-
+            lblMensagem.Visible = true;
             try
             {
-                connection.Open();
-                int result = command.ExecuteNonQuery();
-                if (result > 0)
+                DateTime dataFormatada = DateTime.Parse(txtBoxDataEmissao.Text);
+                osv.Data = dataFormatada;
+                osv.Status = "EM ESPERA";
+                osv.Observacao = txtBoxObservacao.Text;
+                osv.Codigo = Convert.ToInt32(dropDownModelo.SelectedItem.Value);
+
+
+                //Insere valores no banco   
+                OrdemsvBD bdOsv = new OrdemsvBD();
+                int retornoOsv = bdOsv.Insert(osv);
+                // Verifica o retorno da inserção
+                if (retornoOsv == 0)
                 {
-                    lblMensagem.Text = "Ordem de serviço cadastrada com sucesso.";
-                    lblMensagem.CssClass = "text-success";
+                    LimparCampos_Osv(); // Limpa os campos do formulário
+                    lblMensagem.Text = "Cadastro realizado com sucesso.";
                 }
                 else
                 {
-                    lblMensagem.Text = "Erro ao cadastrar a ordem de serviço.";
-                    lblMensagem.CssClass = "text-danger";
+                    lblMensagem.Text = "Erro ao cadastrar o veículo." + retornoOsv;
                 }
+
             }
             catch (Exception ex)
             {
-                lblMensagem.Text = "Erro: " + ex.Message;
-                lblMensagem.CssClass = "text-danger";
+                lblMensagem.Text = "ERRO! Verifique os campos digitados. " + ex.Message;
+                return;
             }
         }
+
     }
 
-    private string GetClienteAssociado(string placaVeiculo)
+    protected void btnProcurarVeic_Click(object sender, EventArgs e)
     {
-        string connectionString = ConfigurationManager.ConnectionStrings["MySQLConnectionString"].ConnectionString;
-        using (MySqlConnection connection = new MySqlConnection(connectionString))
-        {
-            string query = "SELECT CLI_CODIGO FROM VEI_VEICULO WHERE VEI_PLACA = @PlacaVeiculo";
-            MySqlCommand command = new MySqlCommand(query, connection);
-            command.Parameters.AddWithValue("@PlacaVeiculo", placaVeiculo);
+        string marcaFiltro = txtBoxVeiculo.Text.Trim();
 
-            try
-            {
-                connection.Open();
-                object result = command.ExecuteScalar();
-                if (result != null)
-                {
-                    return result.ToString();
-                }
-                else
-                {
-                    return null; // Veículo não cadastrado
-                }
-            }
-            catch (Exception ex)
-            {
-                // Exibe a mensagem em caso de erro
-                Console.WriteLine("Erro ao verificar veículo: " + ex.Message);
-                return null;
-            }
+        if (String.IsNullOrEmpty(marcaFiltro))
+        {
+            lblMensagem.Text = "O campo não pode estar em branco. Insira alguma informação sobre a marca do veículo.";
+            lblMensagem.Visible = true;
+            return;
         }
+
+        OrdemsvBD bdOsv = new OrdemsvBD();
+        DataSet ds = bdOsv.SelectAllVeic(marcaFiltro);
+
+        dropDownModelo.Items.Clear(); // Limpa as opções anteriores
+
+        if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+        {
+            lblMensagem.Text = "";
+
+            // Adiciona a opção padrão
+            dropDownModelo.Items.Add(new ListItem("---- Selecione o veiculo ----", "0"));
+
+            foreach (DataRow row in ds.Tables[0].Rows)
+            {
+                string marca = row["VEI_MARCA"].ToString();
+                string modelo = row["VEI_MODELO"].ToString();
+                string clienteNome = row["CLI_NOME"].ToString();
+                string displayText = string.Format("{0} {1} - {2}", marca, modelo, clienteNome);
+
+                dropDownModelo.Items.Add(new ListItem(displayText, row["VEI_ID"].ToString()));
+            }
+
+            dropDownModelo.SelectedIndex = 0;
+        }
+        else
+        {
+            lblMensagem.Text = "Nenhum veículo encontrado com a marca especificada.";
+            dropDownModelo.Items.Add(new ListItem("---- Selecione o veiculo ----", "0")); // Adiciona a opção padrão mesmo quando não há resultados
+        }
+
+        lblMensagem.Visible = !String.IsNullOrEmpty(lblMensagem.Text); // Define a visibilidade da mensagem com base no seu conteúdo
     }
 
     protected void btnCancelarOS_Click(object sender, EventArgs e)
     {
-        // Limpar todos os campos
-        txtBoxDataEntra.Text = "";
-        txtBoxDataFinalizar.Text = "";
-        txtBoxDescri.Text = "";
-        txtBoxValServ.Text = "";
-        txtBoxVeiculo.Text = "";
-        txtBoxMecanico.Text = "";
-        TextBoxPeca.Text = "";
-        TextBoxQtd.Text = "";
-        dropDownIdCliente.SelectedIndex = 0;
-
-        lblMensagem.Text = "";
+        LimparCampos_Osv();
     }
+
+    protected void dropDownModelo_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        string veiculoId = dropDownModelo.SelectedValue;
+
+        if (!string.IsNullOrEmpty(veiculoId) && veiculoId != "0")
+        {
+            // Buscar informações detalhadas do veículo usando veiculoId
+            DataRow vehicleDetails = GetVehicleDetailsById(veiculoId);
+
+            //Coletando o Id
+            //osv.VeicId = Convert.ToInt32(vehicleDetails["VEI_ID"]);
+
+            if (vehicleDetails != null)
+            {
+                lblmsgMarca.Text = vehicleDetails["VEI_MARCA"].ToString();
+                lblmsgModelo.Text = vehicleDetails["VEI_MODELO"].ToString();
+                lblmsgChassi.Text = vehicleDetails["VEI_CHASSI"].ToString();
+                lblmsgAno.Text = vehicleDetails["VEI_ANO"].ToString();
+                lblmsgKm.Text = vehicleDetails["VEI_KM"].ToString();
+                lblmsgPlaca.Text = vehicleDetails["VEI_PLACA"].ToString() ;
+                
+
+            }
+            else
+            {
+                lblMensagem.Text = "Erro ao buscar os detalhes do veículo.";
+            }
+        }
+        else
+        {
+            // Limpar os campos se a opção padrão for selecionada
+            lblmsgMarca.Text = "";
+            lblmsgModelo.Text = "";
+            lblmsgChassi.Text = "";
+            lblmsgAno.Text = "";
+            lblmsgKm.Text = "";
+            lblmsgPlaca.Text = " ";
+            
+        }
+    }
+
+    private DataRow GetVehicleDetailsById(string veiculoId)
+    {
+        VeiculoBD vei = new VeiculoBD();
+        Veiculo carro = vei.Select(Convert.ToInt32(veiculoId));
+
+        if (carro != null)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("CLI_NOME", typeof(string));
+            dt.Columns.Add("VEI_MARCA", typeof(string));
+            dt.Columns.Add("VEI_MODELO", typeof(string));
+            dt.Columns.Add("VEI_PLACA", typeof(string));
+            dt.Columns.Add("VEI_CHASSI", typeof(string));
+            dt.Columns.Add("VEI_ANO", typeof(int));
+            dt.Columns.Add("VEI_KM", typeof(int));
+            dt.Columns.Add("VEI_ID", typeof(int));
+
+            DataRow dr = dt.NewRow();
+            dr["VEI_MARCA"] = carro.Marca;
+            dr["VEI_MODELO"] = carro.Modelo;
+            dr["VEI_CHASSI"] = carro.Chassi;
+            dr["VEI_ANO"] = carro.Ano;
+            dr["VEI_KM"] = carro.Quilometragem;
+            dr["VEI_ID"] = carro.Codigo;
+            dr["VEI_PLACA"] = carro.Placa;
+
+            return dr;
+        }
+
+        return null;
+    }
+
+
 }
