@@ -15,8 +15,18 @@ public partial class Paginas_CarLink_Ordem : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-
+            // Ocultar os rótulos ao carregar a página pela primeira vez
+            lblMarca.Visible = false;
+            lblModelo.Visible = false;
+            lblChassi.Visible = false;
+            lblAno.Visible = false;
+            lblKm.Visible = false;
+            lblPlaca.Visible = false;
         }
+    }
+    protected void btnFecharModal_Click(object sender, EventArgs e)
+    {
+        AcionaModal.Value = "False";
     }
 
     private void LimparCampos_Osv()
@@ -59,17 +69,31 @@ public partial class Paginas_CarLink_Ordem : System.Web.UI.Page
                 if (retornoOsv == 0)
                 {
                     LimparCampos_Osv(); // Limpa os campos do formulário
-                    lblMensagem.Text = "Cadastro realizado com sucesso.";
+                    lblMensagem.Text = "Cadastro realizado com sucesso";
+
+                    imgCar.ImageUrl = "../img/genericCarModal-removebg-preview.png";
+                    string veiculoTexto = dropDownModelo.SelectedItem.Text;
+                    string[] partes = veiculoTexto.Split(new string[] { " - " }, StringSplitOptions.RemoveEmptyEntries);
+                    if (partes.Length == 2)
+                    {
+                        string marcaModelo = partes[0]; // Obtém a parte da marca e modelo
+                        string nomeCliente = partes[1]; // Obtém a parte do nome do cliente
+                        lblMarcaModelo.Text = marcaModelo;
+                        lblNomeDono.Text = nomeCliente;
+                    }
+                    lblDataModal.Text = osv.Data.ToString("dd/MM/yyyy");
+                    lblObservacaoModal.Text = "Observação: " + osv.Observacao.ToString();
+                                AcionaModal.Value = "True";
                 }
                 else
                 {
-                    lblMensagem.Text = "Erro ao cadastrar o veículo." + retornoOsv;
+                    lblMensagem.Text = "Erro ao cadastrar o veículo" + retornoOsv;
                 }
 
             }
             catch (Exception ex)
             {
-                lblMensagem.Text = "ERRO! Verifique os campos digitados. " + ex.Message;
+                lblMensagem.Text = "ERRO! Verifique os campos digitados" + ex.Message;
                 return;
             }
         }
@@ -79,11 +103,12 @@ public partial class Paginas_CarLink_Ordem : System.Web.UI.Page
     protected void btnProcurarVeic_Click(object sender, EventArgs e)
     {
         string marcaFiltro = txtBoxVeiculo.Text.Trim();
+        AcionaModal.Value = "False";
 
         if (String.IsNullOrEmpty(marcaFiltro))
         {
-            lblMensagem.Text = "O campo não pode estar em branco. Insira alguma informação sobre a marca do veículo.";
-            lblMensagem.Visible = true;
+            lblMensagemProcurar.Text = "O campo não pode estar em branco. Insira alguma informação sobre a marca do veículo.";
+            lblMensagemProcurar.Visible = true;
             return;
         }
 
@@ -94,7 +119,7 @@ public partial class Paginas_CarLink_Ordem : System.Web.UI.Page
 
         if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
         {
-            lblMensagem.Text = "";
+            lblMensagemProcurar.Text = "";
 
             // Adiciona a opção padrão
             dropDownModelo.Items.Add(new ListItem("---- Selecione o veiculo ----", "0"));
@@ -113,7 +138,7 @@ public partial class Paginas_CarLink_Ordem : System.Web.UI.Page
         }
         else
         {
-            lblMensagem.Text = "Nenhum veículo encontrado com a marca especificada.";
+            lblMensagemProcurar.Text = "Nenhum veículo encontrado com a marca especificada.";
             dropDownModelo.Items.Add(new ListItem("---- Selecione o veiculo ----", "0")); // Adiciona a opção padrão mesmo quando não há resultados
         }
 
@@ -123,11 +148,20 @@ public partial class Paginas_CarLink_Ordem : System.Web.UI.Page
     protected void btnCancelarOS_Click(object sender, EventArgs e)
     {
         LimparCampos_Osv();
+        // Ocultar os rótulos ao carregar a página pela primeira vez
+        lblMarca.Visible = false;
+        lblModelo.Visible = false;
+        lblChassi.Visible = false;
+        lblAno.Visible = false;
+        lblKm.Visible = false;
+        lblPlaca.Visible = false;
+        AcionaModal.Value = "False";
     }
 
     protected void dropDownModelo_SelectedIndexChanged(object sender, EventArgs e)
     {
         string veiculoId = dropDownModelo.SelectedValue;
+        AcionaModal.Value = "False";
 
         if (!string.IsNullOrEmpty(veiculoId) && veiculoId != "0")
         {
@@ -144,14 +178,21 @@ public partial class Paginas_CarLink_Ordem : System.Web.UI.Page
                 lblmsgChassi.Text = vehicleDetails["VEI_CHASSI"].ToString();
                 lblmsgAno.Text = vehicleDetails["VEI_ANO"].ToString();
                 lblmsgKm.Text = vehicleDetails["VEI_KM"].ToString();
-                lblmsgPlaca.Text = vehicleDetails["VEI_PLACA"].ToString() ;
-                
+                lblmsgPlaca.Text = vehicleDetails["VEI_PLACA"].ToString();
 
+                // tornando visivel 
+                lblMarca.Visible = true;
+                lblModelo.Visible = true;
+                lblChassi.Visible = true;
+                lblAno.Visible = true;
+                lblKm.Visible = true;
+                lblPlaca.Visible = true;
             }
             else
             {
                 lblMensagem.Text = "Erro ao buscar os detalhes do veículo.";
             }
+
         }
         else
         {
@@ -162,7 +203,17 @@ public partial class Paginas_CarLink_Ordem : System.Web.UI.Page
             lblmsgAno.Text = "";
             lblmsgKm.Text = "";
             lblmsgPlaca.Text = " ";
-            
+
+
+
+            // tornando invisivel 
+            lblMarca.Visible = false;
+            lblModelo.Visible = false;
+            lblChassi.Visible = false;
+            lblAno.Visible = false;
+            lblKm.Visible = false;
+            lblPlaca.Visible = false;
+
         }
     }
 
