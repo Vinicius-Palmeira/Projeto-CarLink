@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Pages_MasterPage : System.Web.UI.MasterPage
+public partial class Paginas_Carlink_Administrar : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -18,17 +18,5 @@ public partial class Pages_MasterPage : System.Web.UI.MasterPage
 
         Registro reg = (Registro)Session["REG"];
         // Use 'reg' conforme necessário.
-    }
-
-    protected void btnLogin_Click(object sender, EventArgs e)
-    {
-        Session["REG"] = null;
-        Response.Redirect("CarLink_Login.aspx");
-    }
-
-        protected string UrlNav(string url)
-    {
-         
-        return ResolveUrl("~/Paginas/" + url); 
     }
 }

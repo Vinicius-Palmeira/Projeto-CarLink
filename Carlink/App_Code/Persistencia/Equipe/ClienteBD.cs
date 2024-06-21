@@ -17,15 +17,16 @@ namespace CarLink.Persistencia.Equipe
             int retorno = 0;
             try
             {
-                IDbConnection objConexao;
-                IDbCommand objCommand;
+                IDbConnection objConexao;//recebe a conexão com o mapped
+                IDbCommand objCommand;//recebe o comando 
                 string sql = "INSERT INTO CLI_CLIENTE(CLI_NOME, CLI_EMAIL, CLI_TELEFONE, CLI_CPF) VALUES(?nome, ?email, ?telefone, ?cpf)";
-                objConexao = Mapped.Connection();
-                objCommand = Mapped.Command(sql, objConexao);
+                objConexao = Mapped.Connection();// manda a conexeção para o mapped
+                objCommand = Mapped.Command(sql, objConexao);// manda o comando 
                 objCommand.Parameters.Add(Mapped.Parameter("?nome", cliente.Nome));
                 objCommand.Parameters.Add(Mapped.Parameter("?email", cliente.Email));
                 objCommand.Parameters.Add(Mapped.Parameter("?telefone", cliente.Telefone));
                 objCommand.Parameters.Add(Mapped.Parameter("?cpf", cliente.Cpf));
+
                 objCommand.ExecuteNonQuery();
                 objConexao.Close();
                 objCommand.Dispose();
@@ -85,24 +86,64 @@ namespace CarLink.Persistencia.Equipe
             objDataReader.Dispose();
             return obj;
         }
-        //update
-        public bool Update(Cliente cliente)
+        //select ID
+        public Cliente SelectID(int id)
         {
+            Cliente obj = null;
             IDbConnection objConexao;
             IDbCommand objCommand;
-            string sql = "UPDATE CLI_CLIENTE SET CLI_NOME=?nome, CLI_EMAIL=?email, CLI_TELEFONE=?telefone, CLI_CPF =?cpf WHERE CLI_ID=?codigo";
+            IDataReader objDataReader;
             objConexao = Mapped.Connection();
-            objCommand = Mapped.Command(sql, objConexao);
-            objCommand.Parameters.Add(Mapped.Parameter("?nome", cliente.Nome));
-            objCommand.Parameters.Add(Mapped.Parameter("?email", cliente.Email));
-            objCommand.Parameters.Add(Mapped.Parameter("?telefone", cliente.Telefone));
-            objCommand.Parameters.Add(Mapped.Parameter("?cpf", cliente.Cpf));
-            objCommand.Parameters.Add(Mapped.Parameter("?codigo", cliente.Codigo));
-            objCommand.ExecuteNonQuery();
+            objCommand = Mapped.Command("SELECT * FROM CLI_CLIENTE WHERE CLI_ID = ?id", objConexao);
+            objCommand.Parameters.Add(Mapped.Parameter("?id", id));
+            objDataReader = objCommand.ExecuteReader();
+            while (objDataReader.Read())
+            {
+                obj = new Cliente();
+                obj.Codigo = Convert.ToInt32(objDataReader["CLI_ID"]);
+                obj.Nome = Convert.ToString(objDataReader["CLI_NOME"]);
+                obj.Email = Convert.ToString(objDataReader["CLI_EMAIL"]);
+                obj.Telefone = Convert.ToString(objDataReader["CLI_TELEFONE"]);
+                obj.Cpf = Convert.ToString(objDataReader["CLI_CPF"]);
+            }
+            objDataReader.Close();
             objConexao.Close();
             objCommand.Dispose();
             objConexao.Dispose();
-            return true;
+            objDataReader.Dispose();
+            return obj;
+        }
+        //update
+        public int Update(Cliente cliente)
+        {
+            int retorno = 0;
+            try
+            {
+                IDbConnection objConexao;
+                IDbCommand objCommand;
+                string sql = "UPDATE CLI_CLIENTE SET CLI_NOME=?nome, CLI_EMAIL=?email, CLI_TELEFONE=?telefone, CLI_CPF =?cpf WHERE CLI_ID=?codigo";
+                objConexao = Mapped.Connection();
+                objCommand = Mapped.Command(sql, objConexao);
+                objCommand.Parameters.Add(Mapped.Parameter("?nome", cliente.Nome));
+                objCommand.Parameters.Add(Mapped.Parameter("?email", cliente.Email));
+                objCommand.Parameters.Add(Mapped.Parameter("?telefone", cliente.Telefone));
+                objCommand.Parameters.Add(Mapped.Parameter("?cpf", cliente.Cpf));
+                objCommand.Parameters.Add(Mapped.Parameter("?codigo", cliente.Codigo));
+                objCommand.ExecuteNonQuery();
+                objConexao.Close();
+                objCommand.Dispose();
+                objConexao.Dispose();
+            }
+            catch (MySql.Data.MySqlClient.MySqlException)
+            {
+                retorno = 1;
+            }
+            catch (Exception)
+            {
+                retorno = 2;
+            }
+
+            return retorno;
         }
         //delete
         public bool Delete(int id)
